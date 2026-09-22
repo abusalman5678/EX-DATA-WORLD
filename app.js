@@ -309,72 +309,49 @@ function togglePassword(
 
 /* ================= API HELPER ================= */
 
-async function apiRequest(
-    endpoint,
-    options = {}
-) {
-
-    /*
-       This function is ready for the backend.
-
-       No secret API credentials are stored here.
-    */
 
 
-    const url =
-        API_URL + endpoint;
-
-
-    const headers = {
-
-        "Content-Type":
-            "application/json",
-
-        ...(options.headers || {})
-
-    };
-
-
-    const response =
-        await fetch(url, {
-
-            ...options,
-
-            headers
-
-        });
-
-
-    let data = null;
-
+        async function apiRequest(endpoint, options = {}) {
+    const url = API_URL + endpoint;
 
     try {
+        const response = await fetch(url, {
+            ...options,
+            headers: {
+                "Content-Type": "application/json",
+                ...(options.headers || {})
+            }
+        });
 
-        data =
-            await response.json();
+        const text = await response.text();
 
-    } catch {
+        let data = {};
 
-        data = {};
+        try {
+            data = text ? JSON.parse(text) : {};
+        } catch {
+            data = {
+                message: text || "Server returned an invalid response."
+            };
+        }
 
-    }
+        if (!response.ok) {
+            throw new Error(
+                data.message ||
+                data.error ||
+                `Server error: ${response.status}`
+            );
+        }
 
+        return data;
 
-    if (!response.ok) {
+    } catch (error) {
+        console.error("API ERROR:", error);
 
         throw new Error(
-            data.message ||
-            data.error ||
-            "Request failed."
+            error.message || "Unable to connect to the server."
         );
-
     }
-
-
-    return data;
-
-}
-
 
 /* ================= REGISTER ================= */
 
