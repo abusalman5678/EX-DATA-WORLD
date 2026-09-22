@@ -19,7 +19,6 @@
 
 const API_URL = "https://ex-data-world-153e.onrender.com";
 
-
 /* ================= APP STATE ================= */
 
 let currentUser = null;
