@@ -6,153 +6,51 @@
 
 /* ================= CONFIG ================= */
 
-/*
-   When a secure backend is ready, change this to
-   your real HTTPS API address.
-
-   Example:
-
-   const API_URL = "https://api.yourdomain.com";
-
-   DO NOT put secret API keys here.
-*/
-
 const API_URL = "https://ex-data-world-153e.onrender.com";
+
 
 /* ================= APP STATE ================= */
 
 let currentUser = null;
-
 let selectedNetwork = "";
-
 let selectedPlan = null;
-
 let selectedLanguage = "EN";
 
 
 /* ================= DATA PLANS ================= */
 
-/*
-   These are UI plan options only.
-
-   They are NOT proof of real provider availability.
-
-   Real plans/prices should eventually come from
-   the VTU provider through the backend.
-*/
-
 const dataPlans = {
 
     MTN: [
-        {
-            id: "mtn-500",
-            name: "500MB",
-            price: 150
-        },
-        {
-            id: "mtn-1gb",
-            name: "1GB",
-            price: 300
-        },
-        {
-            id: "mtn-2gb",
-            name: "2GB",
-            price: 600
-        },
-        {
-            id: "mtn-5gb",
-            name: "5GB",
-            price: 1500
-        },
-        {
-            id: "mtn-10gb",
-            name: "10GB",
-            price: 3000
-        }
+        { id: "mtn-500", name: "500MB", price: 150 },
+        { id: "mtn-1gb", name: "1GB", price: 300 },
+        { id: "mtn-2gb", name: "2GB", price: 600 },
+        { id: "mtn-5gb", name: "5GB", price: 1500 },
+        { id: "mtn-10gb", name: "10GB", price: 3000 }
     ],
 
     AIRTEL: [
-        {
-            id: "airtel-500",
-            name: "500MB",
-            price: 150
-        },
-        {
-            id: "airtel-1gb",
-            name: "1GB",
-            price: 300
-        },
-        {
-            id: "airtel-2gb",
-            name: "2GB",
-            price: 600
-        },
-        {
-            id: "airtel-5gb",
-            name: "5GB",
-            price: 1500
-        },
-        {
-            id: "airtel-10gb",
-            name: "10GB",
-            price: 3000
-        }
+        { id: "airtel-500", name: "500MB", price: 150 },
+        { id: "airtel-1gb", name: "1GB", price: 300 },
+        { id: "airtel-2gb", name: "2GB", price: 600 },
+        { id: "airtel-5gb", name: "5GB", price: 1500 },
+        { id: "airtel-10gb", name: "10GB", price: 3000 }
     ],
 
     GLO: [
-        {
-            id: "glo-500",
-            name: "500MB",
-            price: 150
-        },
-        {
-            id: "glo-1gb",
-            name: "1GB",
-            price: 300
-        },
-        {
-            id: "glo-2gb",
-            name: "2GB",
-            price: 600
-        },
-        {
-            id: "glo-5gb",
-            name: "5GB",
-            price: 1500
-        },
-        {
-            id: "glo-10gb",
-            name: "10GB",
-            price: 3000
-        }
+        { id: "glo-500", name: "500MB", price: 150 },
+        { id: "glo-1gb", name: "1GB", price: 300 },
+        { id: "glo-2gb", name: "2GB", price: 600 },
+        { id: "glo-5gb", name: "5GB", price: 1500 },
+        { id: "glo-10gb", name: "10GB", price: 3000 }
     ],
 
     "9MOBILE": [
-        {
-            id: "9mobile-500",
-            name: "500MB",
-            price: 150
-        },
-        {
-            id: "9mobile-1gb",
-            name: "1GB",
-            price: 300
-        },
-        {
-            id: "9mobile-2gb",
-            name: "2GB",
-            price: 600
-        },
-        {
-            id: "9mobile-5gb",
-            name: "5GB",
-            price: 1500
-        },
-        {
-            id: "9mobile-10gb",
-            name: "10GB",
-            price: 3000
-        }
+        { id: "9mobile-500", name: "500MB", price: 150 },
+        { id: "9mobile-1gb", name: "1GB", price: 300 },
+        { id: "9mobile-2gb", name: "2GB", price: 600 },
+        { id: "9mobile-5gb", name: "5GB", price: 1500 },
+        { id: "9mobile-10gb", name: "10GB", price: 3000 }
     ]
 
 };
@@ -162,64 +60,40 @@ const dataPlans = {
 
 function showPage(pageId) {
 
-    const pages =
-        document.querySelectorAll(".page");
+    const pages = document.querySelectorAll(".page");
 
     pages.forEach(page => {
-
         page.classList.remove("active");
-
     });
 
-
-    const target =
-        document.getElementById(pageId);
+    const target = document.getElementById(pageId);
 
     if (!target) {
-
-        console.warn(
-            "Page not found:",
-            pageId
-        );
-
+        console.warn("Page not found:", pageId);
         return;
     }
 
-
     target.classList.add("active");
-
 
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
 
-
     if (pageId === "dashboard") {
-
         renderDashboard();
-
     }
-
 
     if (pageId === "profile") {
-
         renderProfile();
-
     }
-
 
     if (pageId === "referral") {
-
         renderReferral();
-
     }
 
-
     if (pageId === "transactions") {
-
         loadTransactions();
-
     }
 
 }
@@ -229,21 +103,20 @@ function showPage(pageId) {
 
 function showMessage(message) {
 
-    const box =
-        document.getElementById("messageBox");
+    const box = document.getElementById("messageBox");
+    const text = document.getElementById("messageText");
 
-    const text =
-        document.getElementById("messageText");
+    if (!box || !text) {
+        alert(message);
+        return;
+    }
 
     text.textContent = message;
 
     box.classList.add("show");
 
-
     setTimeout(() => {
-
         box.classList.remove("show");
-
     }, 3500);
 
 }
@@ -262,10 +135,7 @@ function toggleLanguage() {
         document.querySelector(".language-btn");
 
     if (button) {
-
-        button.textContent =
-            selectedLanguage;
-
+        button.textContent = selectedLanguage;
     }
 
     showMessage(
@@ -279,27 +149,21 @@ function toggleLanguage() {
 
 /* ================= PASSWORD ================= */
 
-function togglePassword(
-    inputId,
-    button
-) {
+function togglePassword(inputId, button) {
 
     const input =
         document.getElementById(inputId);
 
     if (!input) return;
 
-
     if (input.type === "password") {
 
         input.type = "text";
-
         button.textContent = "HIDE";
 
     } else {
 
         input.type = "password";
-
         button.textContent = "SHOW";
 
     }
@@ -309,18 +173,27 @@ function togglePassword(
 
 /* ================= API HELPER ================= */
 
+async function apiRequest(endpoint, options = {}) {
 
-
-        async function apiRequest(endpoint, options = {}) {
     const url = API_URL + endpoint;
 
+    const token =
+        sessionStorage.getItem("exdw_session");
+
+    const headers = {
+        "Content-Type": "application/json",
+        ...(options.headers || {})
+    };
+
+    if (token) {
+        headers.Authorization = `Bearer ${token}`;
+    }
+
     try {
+
         const response = await fetch(url, {
             ...options,
-            headers: {
-                "Content-Type": "application/json",
-                ...(options.headers || {})
-            }
+            headers
         });
 
         const text = await response.text();
@@ -328,38 +201,58 @@ function togglePassword(
         let data = {};
 
         try {
-            data = text ? JSON.parse(text) : {};
+
+            data = text
+                ? JSON.parse(text)
+                : {};
+
         } catch {
+
             data = {
-                message: text || "Server returned an invalid response."
+                message:
+                    text ||
+                    "Server returned an invalid response."
             };
+
         }
 
         if (!response.ok) {
+
             throw new Error(
                 data.message ||
                 data.error ||
                 `Server error: ${response.status}`
             );
+
         }
 
         return data;
 
     } catch (error) {
-        console.error("API ERROR:", error);
+
+        console.error(
+            "API ERROR:",
+            error
+        );
 
         throw new Error(
-            error.message || "Unable to connect to the server."
+            error.message ||
+            "Unable to connect to the server."
         );
+
     }
+
+}
+
 
 /* ================= REGISTER ================= */
 
-const registerForm =
-    document.getElementById("registerForm");
+function setupRegisterForm() {
 
+    const registerForm =
+        document.getElementById("registerForm");
 
-if (registerForm) {
+    if (!registerForm) return;
 
     registerForm.addEventListener(
         "submit",
@@ -367,175 +260,106 @@ if (registerForm) {
 
             event.preventDefault();
 
-
             const fullName =
                 document
-                .getElementById(
-                    "registerFullName"
-                )
+                .getElementById("registerFullName")
                 .value
                 .trim();
-
 
             const username =
                 document
-                .getElementById(
-                    "registerUsername"
-                )
+                .getElementById("registerUsername")
                 .value
                 .trim();
-
 
             const email =
                 document
-                .getElementById(
-                    "registerEmail"
-                )
+                .getElementById("registerEmail")
                 .value
                 .trim();
-
 
             const phone =
                 document
-                .getElementById(
-                    "registerPhone"
-                )
+                .getElementById("registerPhone")
                 .value
                 .trim();
-
 
             const nin =
                 document
-                .getElementById(
-                    "registerNin"
-                )
+                .getElementById("registerNin")
                 .value
                 .trim();
-
 
             const password =
                 document
-                .getElementById(
-                    "registerPassword"
-                )
+                .getElementById("registerPassword")
                 .value;
-
 
             const referral =
                 document
-                .getElementById(
-                    "registerReferral"
-                )
+                .getElementById("registerReferral")
                 .value
                 .trim();
 
-
             const terms =
                 document
-                .getElementById(
-                    "registerTerms"
-                )
+                .getElementById("registerTerms")
                 .checked;
 
 
-            /* VALIDATION */
-
             if (fullName.length < 2) {
-
                 showMessage(
                     "Enter your full name."
                 );
-
                 return;
-
             }
 
 
             if (username.length < 3) {
-
                 showMessage(
                     "Username must contain at least 3 characters."
                 );
-
                 return;
-
             }
 
 
             if (!email.includes("@")) {
-
                 showMessage(
                     "Enter a valid email address."
                 );
-
                 return;
-
             }
 
 
             if (!/^0\d{10}$/.test(phone)) {
-
                 showMessage(
                     "Enter a valid Nigerian phone number."
                 );
-
                 return;
-
             }
 
 
             if (!/^\d{11}$/.test(nin)) {
-
                 showMessage(
                     "NIN must contain exactly 11 digits."
                 );
-
                 return;
-
             }
 
 
             if (password.length < 8) {
-
                 showMessage(
                     "Password must contain at least 8 characters."
                 );
-
                 return;
-
             }
 
 
             if (!terms) {
-
                 showMessage(
                     "You must accept the rules."
                 );
-
                 return;
-
-            }
-
-
-            /*
-               BACKEND MODE
-
-               If API_URL is configured, registration
-               will be sent to the backend.
-
-               If API_URL is empty, we do not create
-               a fake real-money account.
-            */
-
-
-            if (!API_URL) {
-
-                showMessage(
-                    "Registration UI is ready. Connect the secure backend before creating real accounts."
-                );
-
-                return;
-
             }
 
 
@@ -553,7 +377,6 @@ if (registerForm) {
                             method: "POST",
 
                             body: JSON.stringify({
-
                                 fullName,
                                 username,
                                 email,
@@ -561,11 +384,26 @@ if (registerForm) {
                                 nin,
                                 password,
                                 referral
-
                             })
-
                         }
                     );
+
+
+                if (result.token) {
+
+                    sessionStorage.setItem(
+                        "exdw_session",
+                        result.token
+                    );
+
+                }
+
+
+                currentUser =
+                    result.user || null;
+
+
+                registerForm.reset();
 
 
                 showMessage(
@@ -574,14 +412,19 @@ if (registerForm) {
                 );
 
 
-                registerForm.reset();
-
-
                 setTimeout(() => {
 
-                    showPage("login");
+                    if (currentUser) {
 
-                }, 1200);
+                        showPage("dashboard");
+
+                    } else {
+
+                        showPage("login");
+
+                    }
+
+                }, 1000);
 
 
             } catch (error) {
@@ -600,11 +443,12 @@ if (registerForm) {
 
 /* ================= LOGIN ================= */
 
-const loginForm =
-    document.getElementById("loginForm");
+function setupLoginForm() {
 
+    const loginForm =
+        document.getElementById("loginForm");
 
-if (loginForm) {
+    if (!loginForm) return;
 
     loginForm.addEventListener(
         "submit",
@@ -612,21 +456,15 @@ if (loginForm) {
 
             event.preventDefault();
 
-
             const identity =
                 document
-                .getElementById(
-                    "loginIdentity"
-                )
+                .getElementById("loginIdentity")
                 .value
                 .trim();
 
-
             const password =
                 document
-                .getElementById(
-                    "loginPassword"
-                )
+                .getElementById("loginPassword")
                 .value;
 
 
@@ -637,18 +475,6 @@ if (loginForm) {
                 );
 
                 return;
-
-            }
-
-
-            if (!API_URL) {
-
-                showMessage(
-                    "Login UI is ready. Connect the secure backend before logging in."
-                );
-
-                return;
-
             }
 
 
@@ -666,42 +492,34 @@ if (loginForm) {
                             method: "POST",
 
                             body: JSON.stringify({
-
                                 identity,
                                 password
-
                             })
-
                         }
                     );
 
 
-                if (result.token) {
+                if (!result.token) {
 
-                    /*
-                       NOTE:
-
-                       For production, prefer an HttpOnly
-                       secure cookie from the backend.
-
-                       This frontend is structured so that
-                       the backend can provide that later.
-                    */
-
-                    sessionStorage.setItem(
-                        "exdw_session",
-                        result.token
+                    throw new Error(
+                        "Login succeeded but no session token was returned."
                     );
 
                 }
 
 
+                sessionStorage.setItem(
+                    "exdw_session",
+                    result.token
+                );
+
+
                 currentUser =
-                    result.user ||
-                    null;
+                    result.user || null;
 
 
                 showMessage(
+                    result.message ||
                     "Login successful."
                 );
 
@@ -727,14 +545,51 @@ if (loginForm) {
 }
 
 
+/* ================= RESTORE SESSION ================= */
+
+async function restoreSession() {
+
+    const token =
+        sessionStorage.getItem(
+            "exdw_session"
+        );
+
+    if (!token) return;
+
+    try {
+
+        const result =
+            await apiRequest(
+                "/api/auth/me"
+            );
+
+        currentUser =
+            result.user || null;
+
+    } catch (error) {
+
+        console.warn(
+            "Session restore failed:",
+            error.message
+        );
+
+        sessionStorage.removeItem(
+            "exdw_session"
+        );
+
+        currentUser = null;
+
+    }
+
+}
+
+
 /* ================= DASHBOARD ================= */
 
 function renderDashboard() {
 
     if (!currentUser) {
-
         return;
-
     }
 
 
@@ -763,7 +618,6 @@ function renderDashboard() {
         document.getElementById(
             "virtualAccountNumber"
         );
-
 
     const accountBank =
         document.getElementById(
@@ -796,9 +650,7 @@ function renderDashboard() {
 function renderProfile() {
 
     if (!currentUser) {
-
         return;
-
     }
 
 
@@ -807,16 +659,13 @@ function renderProfile() {
         currentUser.fullName ||
         "User";
 
-
     const username =
         currentUser.username ||
         "username";
 
-
     const email =
         currentUser.email ||
         "—";
-
 
     const phone =
         currentUser.phone ||
@@ -828,36 +677,30 @@ function renderProfile() {
         fullName
     );
 
-
     setText(
         "profileUsername",
         "@" + username
     );
-
 
     setText(
         "profileFullName",
         fullName
     );
 
-
     setText(
         "profileUsername2",
         username
     );
-
 
     setText(
         "profileEmail",
         email
     );
 
-
     setText(
         "profilePhone",
         phone
     );
-
 
     setText(
         "profileKyc",
@@ -865,7 +708,6 @@ function renderProfile() {
         currentUser.kycStatus ||
         "PENDING"
     );
-
 
     setText(
         "profileStatus",
@@ -876,10 +718,7 @@ function renderProfile() {
 }
 
 
-function setText(
-    elementId,
-    value
-) {
+function setText(elementId, value) {
 
     const element =
         document.getElementById(
@@ -887,10 +726,7 @@ function setText(
         );
 
     if (element) {
-
-        element.textContent =
-            value;
-
+        element.textContent = value;
     }
 
 }
@@ -902,7 +738,6 @@ function updateWallet(balance) {
 
     const amount =
         Number(balance || 0);
-
 
     const formatted =
         "₦" +
@@ -920,7 +755,6 @@ function updateWallet(balance) {
         formatted
     );
 
-
     setText(
         "walletBalancePage",
         formatted
@@ -931,17 +765,10 @@ function updateWallet(balance) {
 
 /* ================= DATA ================= */
 
-function selectNetwork(
-    network,
-    button
-) {
+function selectNetwork(network, button) {
 
-    selectedNetwork =
-        network;
-
-
-    selectedPlan =
-        null;
+    selectedNetwork = network;
+    selectedPlan = null;
 
 
     document
@@ -978,14 +805,11 @@ function renderDataPlans() {
             "dataPlans"
         );
 
-
     if (!container) return;
 
 
     const plans =
-        dataPlans[
-            selectedNetwork
-        ] || [];
+        dataPlans[selectedNetwork] || [];
 
 
     if (!plans.length) {
@@ -997,7 +821,6 @@ function renderDataPlans() {
         `;
 
         return;
-
     }
 
 
@@ -1006,11 +829,11 @@ function renderDataPlans() {
 
             return `
                 <button
+                    type="button"
                     class="plan"
                     onclick="selectDataPlan('${plan.id}')"
                     data-plan-id="${plan.id}"
                 >
-
                     <strong>
                         ${plan.name}
                     </strong>
@@ -1018,7 +841,6 @@ function renderDataPlans() {
                     <span>
                         ₦${plan.price.toLocaleString()}
                     </span>
-
                 </button>
             `;
 
@@ -1030,9 +852,7 @@ function renderDataPlans() {
 function selectDataPlan(planId) {
 
     const plans =
-        dataPlans[
-            selectedNetwork
-        ] || [];
+        dataPlans[selectedNetwork] || [];
 
 
     selectedPlan =
@@ -1060,11 +880,9 @@ function selectDataPlan(planId) {
 
 
     if (selected) {
-
         selected.classList.add(
             "selected"
         );
-
     }
 
 }
@@ -1074,9 +892,7 @@ async function confirmDataPurchase() {
 
     const phone =
         document
-        .getElementById(
-            "dataPhone"
-        )
+        .getElementById("dataPhone")
         .value
         .trim();
 
@@ -1088,7 +904,6 @@ async function confirmDataPurchase() {
         );
 
         return;
-
     }
 
 
@@ -1099,7 +914,6 @@ async function confirmDataPurchase() {
         );
 
         return;
-
     }
 
 
@@ -1110,18 +924,6 @@ async function confirmDataPurchase() {
         );
 
         return;
-
-    }
-
-
-    if (!API_URL) {
-
-        showMessage(
-            "DATA purchase is ready for backend integration. No fake purchase was made."
-        );
-
-        return;
-
     }
 
 
@@ -1134,17 +936,10 @@ async function confirmDataPurchase() {
                     method: "POST",
 
                     body: JSON.stringify({
-
-                        network:
-                            selectedNetwork,
-
+                        network: selectedNetwork,
                         phone,
-
-                        planId:
-                            selectedPlan.id
-
+                        planId: selectedPlan.id
                     })
-
                 }
             );
 
@@ -1172,27 +967,19 @@ async function buyAirtime() {
 
     const network =
         document
-        .getElementById(
-            "airtimeNetwork"
-        )
+        .getElementById("airtimeNetwork")
         .value;
-
 
     const phone =
         document
-        .getElementById(
-            "airtimePhone"
-        )
+        .getElementById("airtimePhone")
         .value
         .trim();
-
 
     const amount =
         Number(
             document
-            .getElementById(
-                "airtimeAmount"
-            )
+            .getElementById("airtimeAmount")
             .value
         );
 
@@ -1204,7 +991,6 @@ async function buyAirtime() {
         );
 
         return;
-
     }
 
 
@@ -1215,7 +1001,6 @@ async function buyAirtime() {
         );
 
         return;
-
     }
 
 
@@ -1226,18 +1011,6 @@ async function buyAirtime() {
         );
 
         return;
-
-    }
-
-
-    if (!API_URL) {
-
-        showMessage(
-            "Airtime purchase is ready for backend integration. No fake purchase was made."
-        );
-
-        return;
-
     }
 
 
@@ -1250,13 +1023,10 @@ async function buyAirtime() {
                     method: "POST",
 
                     body: JSON.stringify({
-
                         network,
                         phone,
                         amount
-
                     })
-
                 }
             );
 
@@ -1284,26 +1054,18 @@ async function buyCable() {
 
     const provider =
         document
-        .getElementById(
-            "cableProvider"
-        )
+        .getElementById("cableProvider")
         .value;
-
 
     const number =
         document
-        .getElementById(
-            "cableNumber"
-        )
+        .getElementById("cableNumber")
         .value
         .trim();
 
-
     const packageName =
         document
-        .getElementById(
-            "cablePackage"
-        )
+        .getElementById("cablePackage")
         .value;
 
 
@@ -1314,7 +1076,6 @@ async function buyCable() {
         );
 
         return;
-
     }
 
 
@@ -1325,7 +1086,6 @@ async function buyCable() {
         );
 
         return;
-
     }
 
 
@@ -1336,18 +1096,6 @@ async function buyCable() {
         );
 
         return;
-
-    }
-
-
-    if (!API_URL) {
-
-        showMessage(
-            "Cable TV is ready for backend/provider integration. No fake payment was made."
-        );
-
-        return;
-
     }
 
 
@@ -1360,13 +1108,10 @@ async function buyCable() {
                     method: "POST",
 
                     body: JSON.stringify({
-
                         provider,
                         number,
                         packageName
-
                     })
-
                 }
             );
 
@@ -1394,27 +1139,19 @@ async function payElectricity() {
 
     const disco =
         document
-        .getElementById(
-            "electricityDisco"
-        )
+        .getElementById("electricityDisco")
         .value;
-
 
     const meterNumber =
         document
-        .getElementById(
-            "meterNumber"
-        )
+        .getElementById("meterNumber")
         .value
         .trim();
-
 
     const amount =
         Number(
             document
-            .getElementById(
-                "electricityAmount"
-            )
+            .getElementById("electricityAmount")
             .value
         );
 
@@ -1426,7 +1163,6 @@ async function payElectricity() {
         );
 
         return;
-
     }
 
 
@@ -1437,7 +1173,6 @@ async function payElectricity() {
         );
 
         return;
-
     }
 
 
@@ -1448,18 +1183,6 @@ async function payElectricity() {
         );
 
         return;
-
-    }
-
-
-    if (!API_URL) {
-
-        showMessage(
-            "Electricity payment is ready for backend/provider integration. No fake payment was made."
-        );
-
-        return;
-
     }
 
 
@@ -1472,13 +1195,10 @@ async function payElectricity() {
                     method: "POST",
 
                     body: JSON.stringify({
-
                         disco,
                         meterNumber,
                         amount
-
                     })
-
                 }
             );
 
@@ -1506,18 +1226,13 @@ async function buyExam() {
 
     const examType =
         document
-        .getElementById(
-            "examType"
-        )
+        .getElementById("examType")
         .value;
-
 
     const quantity =
         Number(
             document
-            .getElementById(
-                "examQuantity"
-            )
+            .getElementById("examQuantity")
             .value
         );
 
@@ -1529,7 +1244,6 @@ async function buyExam() {
         );
 
         return;
-
     }
 
 
@@ -1540,18 +1254,6 @@ async function buyExam() {
         );
 
         return;
-
-    }
-
-
-    if (!API_URL) {
-
-        showMessage(
-            "Exam PIN is ready for backend/provider integration. No fake PIN was generated."
-        );
-
-        return;
-
     }
 
 
@@ -1564,12 +1266,9 @@ async function buyExam() {
                     method: "POST",
 
                     body: JSON.stringify({
-
                         examType,
                         quantity
-
                     })
-
                 }
             );
 
@@ -1598,9 +1297,7 @@ async function fundWallet() {
     const amount =
         Number(
             document
-            .getElementById(
-                "depositAmount"
-            )
+            .getElementById("depositAmount")
             .value
         );
 
@@ -1612,18 +1309,6 @@ async function fundWallet() {
         );
 
         return;
-
-    }
-
-
-    if (!API_URL) {
-
-        showMessage(
-            "Wallet funding will use a real payment provider after backend integration. No fake balance was added."
-        );
-
-        return;
-
     }
 
 
@@ -1636,11 +1321,8 @@ async function fundWallet() {
                     method: "POST",
 
                     body: JSON.stringify({
-
                         amount
-
                     })
-
                 }
             );
 
@@ -1651,7 +1333,6 @@ async function fundWallet() {
                 result.paymentUrl;
 
             return;
-
         }
 
 
@@ -1685,21 +1366,6 @@ async function loadTransactions() {
     if (!container) return;
 
 
-    if (!API_URL) {
-
-        container.innerHTML = `
-            <div class="empty-state">
-                Backend is not connected yet.
-                Real transactions will appear here
-                after backend integration.
-            </div>
-        `;
-
-        return;
-
-    }
-
-
     try {
 
         const result =
@@ -1709,8 +1375,7 @@ async function loadTransactions() {
 
 
         const transactions =
-            result.transactions ||
-            [];
+            result.transactions || [];
 
 
         if (!transactions.length) {
@@ -1722,7 +1387,6 @@ async function loadTransactions() {
             `;
 
             return;
-
         }
 
 
@@ -1766,7 +1430,10 @@ async function loadTransactions() {
 
         container.innerHTML = `
             <div class="empty-state">
-                Unable to load transactions.
+                ${escapeHtml(
+                    error.message ||
+                    "Unable to load transactions."
+                )}
             </div>
         `;
 
@@ -1780,9 +1447,7 @@ async function loadTransactions() {
 function renderReferral() {
 
     if (!currentUser) {
-
         return;
-
     }
 
 
@@ -1847,7 +1512,6 @@ function copyReferral() {
         );
 
         return;
-
     }
 
 
@@ -1871,7 +1535,6 @@ function copyReferralLink() {
         );
 
         return;
-
     }
 
 
@@ -1907,26 +1570,15 @@ async function copyText(text) {
 
 /* ================= LOGOUT ================= */
 
-async function logout() {
-
-    /*
-       If backend uses an HttpOnly cookie,
-       the backend logout route can invalidate
-       the session there.
-
-       Do not store passwords.
-    */
+function logout() {
 
     currentUser = null;
-
 
     sessionStorage.removeItem(
         "exdw_session"
     );
 
-
     showPage("home");
-
 
     showMessage(
         "You have been logged out."
@@ -1940,15 +1592,10 @@ async function logout() {
 function escapeHtml(value) {
 
     return String(value)
-
         .replaceAll("&", "&amp;")
-
         .replaceAll("<", "&lt;")
-
         .replaceAll(">", "&gt;")
-
         .replaceAll('"', "&quot;")
-
         .replaceAll("'", "&#039;");
 
 }
@@ -1956,15 +1603,12 @@ function escapeHtml(value) {
 
 /* ================= PHONE INPUT ================= */
 
-function restrictNumberInput(
-    elementId
-) {
+function restrictNumberInput(elementId) {
 
     const element =
         document.getElementById(
             elementId
         );
-
 
     if (!element) return;
 
@@ -1985,32 +1629,40 @@ function restrictNumberInput(
 }
 
 
-restrictNumberInput(
-    "registerPhone"
-);
-
-restrictNumberInput(
-    "registerNin"
-);
-
-restrictNumberInput(
-    "dataPhone"
-);
-
-restrictNumberInput(
-    "airtimePhone"
-);
-
-
 /* ================= STARTUP ================= */
 
 document.addEventListener(
     "DOMContentLoaded",
-    function() {
+    async function() {
 
-        showPage("home");
+        setupRegisterForm();
+        setupLoginForm();
+
+        restrictNumberInput(
+            "registerPhone"
+        );
+
+        restrictNumberInput(
+            "registerNin"
+        );
+
+        restrictNumberInput(
+            "dataPhone"
+        );
+
+        restrictNumberInput(
+            "airtimePhone"
+        );
 
         renderDataPlans();
+
+        await restoreSession();
+
+        showPage(
+            currentUser
+                ? "dashboard"
+                : "home"
+        );
 
         console.log(
             "EX-DATA WORLD frontend loaded."
