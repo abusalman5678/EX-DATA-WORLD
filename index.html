@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EX-DATA WORLD</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <div class="brand" onclick="showPage('home')">
+        <div class="brand-main">EX-DATA</div>
+        <div class="brand-sub">WORLD</div>
+    </div>
+
+    <nav class="desktop-nav">
+        <button onclick="showPage('home')">Home</button>
+        <button onclick="showPage('services')">Services</button>
+        <button onclick="showPage('about')">About</button>
+    </nav>
+
+    <div class="header-actions">
+        <button class="language-btn" onclick="toggleLanguage()">
+            EN
+        </button>
+
+        <button class="header-login"
+                onclick="showPage('login')">
+            LOGIN
+        </button>
+    </div>
+
+</header>
+
+
+<!-- ================= HOME ================= -->
+
+<main id="home" class="page active">
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                DIGITAL SERVICES PLATFORM
+            </div>
+
+            <h1>
+                Welcome to
+                <span>EX-DATA WORLD</span>
+            </h1>
+
+            <p>
+                Your trusted platform for data, airtime
+                and other digital services.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="gold-btn"
+                        onclick="showPage('register')">
+                    CREATE ACCOUNT
+                </button>
+
+                <button class="outline-btn"
+                        onclick="showPage('login')">
+                    LOGIN
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="feature-section">
+
+        <div class="section-heading">
+            <span>WHAT WE OFFER</span>
+            <h2>Our Services</h2>
+            <p>
+                Access digital services from one platform.
+            </p>
+        </div>
+
+
+        <div class="service-grid">
+
+            <div class="service-card">
+                <div class="service-icon">📶</div>
+                <h3>DATA</h3>
+                <p>Purchase data bundles for supported networks.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>AIRTIME</h3>
+                <p>Recharge supported mobile networks.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📺</div>
+                <h3>CABLE TV</h3>
+                <p>Manage your cable subscription.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>ELECTRICITY</h3>
+                <p>Pay supported electricity bills.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🎓</div>
+                <h3>EXAM PIN</h3>
+                <p>Purchase supported examination PINs.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🎮</div>
+                <h3>GAMES</h3>
+                <p>Digital gaming services.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="how-section">
+
+        <div class="section-heading">
+            <span>SIMPLE PROCESS</span>
+            <h2>How It Works</h2>
+        </div>
+
+        <div class="steps">
+
+            <div class="step">
+                <div>01</div>
+                <h3>Create Account</h3>
+                <p>Register your EX-DATA WORLD account.</p>
+            </div>
+
+            <div class="step">
+                <div>02</div>
+                <h3>Fund Wallet</h3>
+                <p>Add money through a connected payment provider.</p>
+            </div>
+
+            <div class="step">
+                <div>03</div>
+                <h3>Choose Service</h3>
+                <p>Select the digital service you need.</p>
+            </div>
+
+            <div class="step">
+                <div>04</div>
+                <h3>Track Transaction</h3>
+                <p>View your transaction history from your account.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ================= REGISTER ================= -->
+
+<main id="register" class="page">
+
+    <div class="auth-container">
+
+        <button class="back-button"
+                onclick="showPage('home')">
+            ← Back
+        </button>
+
+        <div class="auth-card">
+
+            <div class="auth-logo">
+                EX-DATA <span>WORLD</span>
+            </div>
+
+            <h2>Create Account</h2>
+
+            <p class="auth-description">
+                Register to access EX-DATA WORLD services.
+            </p>
+
+
+            <form id="registerForm">
+
+                <label>Full Name</label>
+
+                <input
+                    type="text"
+                    id="registerFullName"
+                    placeholder="Enter your full name"
+                    autocomplete="name"
+                    required
+                >
+
+
+                <label>Username</label>
+
+                <input
+                    type="text"
+                    id="registerUsername"
+                    placeholder="Choose a username"
+                    autocomplete="username"
+                    required
+                >
+
+
+                <label>Email Address</label>
+
+                <input
+                    type="email"
+                    id="registerEmail"
+                    placeholder="example@email.com"
+                    autocomplete="email"
+                    required
+                >
+
+
+                <label>Phone Number</label>
+
+                <input
+                    type="tel"
+                    id="registerPhone"
+                    placeholder="08012345678"
+                    maxlength="11"
+                    required
+                >
+
+
+                <label>NIN</label>
+
+                <input
+                    type="text"
+                    id="registerNin"
+                    placeholder="Enter your 11-digit NIN"
+                    maxlength="11"
+                    inputmode="numeric"
+                    required
+                >
+
+                <small class="field-note">
+                    NIN verification will be performed through
+                    an approved KYC provider when connected.
+                </small>
+
+
+                <label>Password</label>
+
+                <div class="password-box">
+
+                    <input
+                        type="password"
+                        id="registerPassword"
+                        placeholder="Minimum 8 characters"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                    <button type="button"
+                            onclick="togglePassword('registerPassword', this)">
+                        SHOW
+                    </button>
+
+                </div>
+
+
+                <label>Referral Code</label>
+
+                <input
+                    type="text"
+                    id="registerReferral"
+                    placeholder="Optional referral code"
+                >
+
+
+                <label class="checkbox-row">
+
+                    <input
+                        type="checkbox"
+                        id="registerTerms"
+                        required
+                    >
+
+                    <span>
+                        I agree to the EX-DATA WORLD
+                        rules and regulations.
+                    </span>
+
+                </label>
+
+
+                <button
+                    type="submit"
+                    class="submit-button">
+                    CREATE ACCOUNT
+                </button>
+
+            </form>
+
+
+            <div class="auth-switch">
+
+                Already have an account?
+
+                <button onclick="showPage('login')">
+                    Login
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- ================= LOGIN ================= -->
+
+<main id="login" class="page">
+
+    <div class="auth-container">
+
+        <button class="back-button"
+                onclick="showPage('home')">
+            ← Back
+        </button>
+
+        <div class="auth-card">
+
+            <div class="auth-logo">
+                EX-DATA <span>WORLD</span>
+            </div>
+
+            <h2>Welcome Back</h2>
+
+            <p class="auth-description">
+                Login to your EX-DATA WORLD account.
+            </p>
+
+
+            <form id="loginForm">
+
+                <label>Username, Email or Phone</label>
+
+                <input
+                    type="text"
+                    id="loginIdentity"
+                    placeholder="Enter your login details"
+                    autocomplete="username"
+                    required
+                >
+
+
+                <label>Password</label>
+
+                <div class="password-box">
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="Enter password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                    <button type="button"
+                            onclick="togglePassword('loginPassword', this)">
+                        SHOW
+                    </button>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-button">
+                    LOGIN
+                </button>
+
+            </form>
+
+
+            <div class="auth-switch">
+
+                Don't have an account?
+
+                <button onclick="showPage('register')">
+                    Create Account
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<main id="dashboard" class="page">
+
+    <div class="dashboard-container">
+
+        <div class="dashboard-header">
+
+            <div>
+
+                <p class="welcome-text">
+                    Welcome back
+                </p>
+
+                <h2 id="dashboardName">
+                    User
+                </h2>
+
+            </div>
+
+            <button class="logout-button"
+                    onclick="logout()">
+                Logout
+            </button>
+
+        </div>
+
+
+        <!-- WALLET -->
+
+        <section class="wallet-card">
+
+            <div>
+
+                <p>Wallet Balance</p>
+
+                <h1 id="walletBalance">
+                    ₦0.00
+                </h1>
+
+            </div>
+
+            <button onclick="showPage('wallet')">
+                FUND WALLET
+            </button>
+
+        </section>
+
+
+        <!-- VIRTUAL ACCOUNT -->
+
+        <section class="account-box">
+
+            <div class="account-title">
+                <span>Virtual Account</span>
+
+                <span class="status-badge">
+                    PENDING
+                </span>
+            </div>
+
+            <h3 id="virtualAccountNumber">
+                Not connected
+            </h3>
+
+            <p id="virtualAccountBank">
+                Virtual account provider pending
+            </p>
+
+        </section>
+
+
+        <!-- QUICK SERVICES -->
+
+        <div class="section-title-row">
+
+            <h2>Services</h2>
+
+            <button onclick="showPage('services')">
+                View All
+            </button>
+
+        </div>
+
+
+        <div class="dashboard-service-grid">
+
+            <button onclick="showPage('data')">
+                <span>📶</span>
+                <strong>DATA</strong>
+            </button>
+
+            <button onclick="showPage('airtime')">
+                <span>📱</span>
+                <strong>AIRTIME</strong>
+            </button>
+
+            <button onclick="showPage('cable')">
+                <span>📺</span>
+                <strong>CABLE TV</strong>
+            </button>
+
+            <button onclick="showPage('electricity')">
+                <span>⚡</span>
+                <strong>ELECTRICITY</strong>
+            </button>
+
+            <button onclick="showPage('exam')">
+                <span>🎓</span>
+                <strong>EXAM PIN</strong>
+            </button>
+
+            <button onclick="showPage('transactions')">
+                <span>💳</span>
+                <strong>TRANSACTIONS</strong>
+            </button>
+
+            <button onclick="showPage('referral')">
+                <span>👥</span>
+                <strong>REFERRAL</strong>
+            </button>
+
+            <button onclick="showPage('profile')">
+                <span>👤</span>
+                <strong>PROFILE</strong>
+            </button>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- ================= SERVICES ================= -->
+
+<main id="services" class="page">
+
+    <div class="content-container">
+
+        <button class="back-button"
+                onclick="showPage('dashboard')">
+            ← Dashboard
+        </button>
+
+        <div class="page-heading">
+
+            <span>SERVICES</span>
+
+            <h1>Digital Services</h1>
+
+            <p>
+                Select the service you need.
+            </p>
+
+        </div>
+
+
+        <div class="large-service-grid">
+
+            <button onclick="showPage('data')">
+                <span>📶</span>
+                <h3>DATA</h3>
+                <p>Buy data bundles.</p>
+            </button>
+
+            <button onclick="showPage('airtime')">
+                <span>📱</span>
+                <h3>AIRTIME</h3>
+                <p>Recharge airtime.</p>
+            </button>
+
+            <button onclick="showPage('cable')">
+                <span>📺</span>
+                <h3>CABLE TV</h3>
+                <p>Pay cable subscription.</p>
+            </button>
+
+            <button onclick="showPage('electricity')">
+                <span>⚡</span>
+                <h3>ELECTRICITY</h3>
+                <p>Pay electricity bills.</p>
+            </button>
+
+            <button onclick="showPage('exam')">
+                <span>🎓</span>
+                <h3>EXAM PIN</h3>
+                <p>Purchase examination PIN.</p>
+            </button>
+
+            <button onclick="showMessage('Games service will be connected later.')">
+                <span>🎮</span>
+                <h3>GAMES</h3>
+                <p>Digital gaming services.</p>
+            </button>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- ================= DATA ================= -->
+
+<main id="data" class="page">
+
+    <div class="content-container">
+
+        <button class="back-button"
+                onclick="showPage('dashboard')">
+            ← Dashboard
+        </button>
+
+        <div class="page-heading">
+
+            <span>DATA</span>
+
+            <h1>Buy Data</h1>
+
+            <p>
+                Select network and data plan.
+            </p>
+
+        </div>
+
+
+        <section class="purchase-card">
+
+            <label>Network</label>
+
+            <div class="network-grid">
+
+                <button onclick="selectNetwork('MTN', this)">
+                    MTN
+                </button>
+
+                <button onclick="selectNetwork('AIRTEL', this)">
+                    AIRTEL
+                </button>
+
+                <button onclick="selectNetwork('GLO', this)">
+                    GLO
+                </button>
+
+                <button onclick="selectNetwork('9MOBILE', this)">
+                    9MOBILE
+                </button>
+
+            </div>
+
+
+            <label>Phone Number</label>
+
+            <input
+                type="tel"
+                id="dataPhone"
+                maxlength="11"
+                placeholder="08012345678"
+                inputmode="numeric"
+            >
+
+
+            <label>Data Plan</label>
+
+            <div id="dataPlans"
+                 class="plans-grid">
+
+                <div class="empty-plan">
+                    Select a network first.
+                </div>
+
+            </div>
+
+
+            <button class="submit-button"
+                    onclick="confirmDataPurchase()">
+                CONTINUE
+            </button>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- ================= AIRTIME ================= -->
+
+<main id="airtime" class="page">
+
+    <div class="content-container">
+
+        <button class="back-button"
+                onclick="showPage('dashboard')">
+            ← Dashboard
+        </button>
+
+        <div class="page-heading">
+
+            <span>AIRTIME</span>
+
+            <h1>Buy Airtime</h1>
+
+            <p>Recharge a supported mobile number.</p>
+
+        </div>
+
+
+        <section class="purchase-card">
+
+            <label>Network</label>
+
+            <select id="airtimeNetwork">
+
+                <option value="">Select Network</option>
+                <option value="MTN">MTN</option>
+                <option value="AIRTEL">Airtel</option>
+                <option value="GLO">Glo</option>
+                <option value="9MOBILE">9mobile</option>
+
+            </select>
+
+
+            <label>Phone Number</label>
+
+            <input
+                id="airtimePhone"
+                type="tel"
+                maxlength="11"
+                placeholder="08012345678"
+            >
+
+
+            <label>Amount</label>
+
+            <input
+                id="airtimeAmount"
+                type="number"
+                min="50"
+                placeholder="Enter amount"
+            >
+
+
+            <button class="submit-button"
+                    onclick="buyAirtime()">
+                CONTINUE
+            </button>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- ================= CABLE ================= -->
+
+<main id="cable" class="page">
+
+    <div class="content-container">
+
+        <button class="back-button"
+                onclick="showPage('dashboard')">
+            ← Dashboard
+        </button>
+
+        <div class="page-heading">
+
+            <span>CABLE TV</span>
+
+            <h1>Cable Subscription</h1>
+
+            <p>Manage your cable subscription.</p>
+
+        </div>
+
+
+        <section class="purchase-card">
+
+            <label>Provider</label>
+
+            <select id="cableProvider">
+
+                <option value="">
+                    Select Provider
+                </option>
+
+                <option value="DSTV">
+                    DStv
+                </option>
+
+                <option value="GOTV">
+                    GOtv
+                </option>
+
+                <option value="STARTIMES">
+                    Startimes
+                </option>
+
+            </select>
+
+
+            <label>Smartcard / IUC Number</label>
+
+            <input
+                id="cableNumber"
+                type="text"
+                placeholder="Enter Smartcard / IUC"
+            >
+
+
+            <label>Package</label>
+
+            <select id="cablePackage">
+
+                <option value="">
+                    Select Package
+                </option>
+
+                <option value="BASIC">
+                    Basic
+                </option>
+
+                <option value="STANDARD">
+                    Standard
+                </option>
+
+                <option value="PREMIUM">
+                    Premium
+                </option>
+
+            </select>
+
+
+            <button class="submit-button"
+                    onclick="buyCable()">
+                CONTINUE
+            </button>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- ================= ELECTRICITY ================= -->
+
+<main id="electricity" class="page">
+
+    <div class="content-container">
+
+        <button class="back-button"
+                onclick="showPage('dashboard')">
+            ← Dashboard
+        </button>
+
+        <div class="page-heading">
+
+            <span>ELECTRICITY</span>
+
+            <h1>Electricity Bill</h1>
+
+            <p>Pay your electricity bill.</p>
+
+        </div>
+
+
+        <section class="purchase-card">
+
+            <label>Disco</label>
+
+            <select id="electricityDisco">
+
+                <option value="">
+                    Select Disco
+                </option>
+
+                <option value="AEDC">
+                    AEDC
+                </option>
+
+                <option value="EKEDC">
+                    Eko Electricity
+                </option>
+
+                <option value="IKEDC">
+                    Ikeja Electric
+                </option>
+
+            </select>
+
+
+            <label>Meter Number</label>
+
+            <input
+                id="meterNumber"
+                type="text"
+                placeholder="Enter meter number"
+            >
+
+
+            <label>Amount</label>
+
+            <input
+                id="electricityAmount"
+                type="number"
+                placeholder="Enter amount"
+            >
+
+
+            <button class="submit-button"
+                    onclick="payElectricity()">
+                CONTINUE
+            </button>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- ================= EXAM ================= -->
+
+<main id="exam" class="page">
+
+    <div class="content-container">
+
+        <button class="back-button"
+                onclick="showPage('dashboard')">
+            ← Dashboard
+        </button>
+
+        <div class="page-heading">
+
+            <span>EXAM PIN</span>
+
+            <h1>Exam PIN</h1>
+
+            <p>Purchase a supported examination PIN.</p>
+
+        </div>
+
+
+        <section class="purchase-card">
+
+            <label>Examination</label>
+
+            <select id="examType">
+
+                <option value="">
+                    Select Examination
+                </option>
+
+                <option value="WAEC">
+                    WAEC
+                </option>
+
+                <option value="NECO">
+                    NECO
+                </option>
+
+                <option value="JAMB">
+                    JAMB
+                </option>
+
+            </select>
+
+
+            <label>Quantity</label>
+
+            <input
+                id="examQuantity"
+                type="number"
+                min="1"
+                value="1"
+            >
+
+
+            <button class="submit-button"
+                    onclick="buyExam()">
+                CONTINUE
+            </button>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- ================= WALLET ================= -->
+
+<main id="wallet" class="page">
+
+    <div class="content-container">
+
+        <button class="back-button"
+                onclick="showPage('dashboard')">
+            ← Dashboard
+        </button>
+
+        <div class="page-heading">
+
+            <span>WALLET</span>
+
+            <h1>Wallet</h1>
+
+            <p>Manage your account balance.</p>
+
+        </div>
+
+
+        <section class="wallet-large-card">
+
+            <p>Available Balance</p>
+
+            <h1 id="walletBalancePage">
+                ₦0.00
+            </h1>
+
+        </section>
+
+
+        <section class="purchase-card">
+
+            <h3>Fund Wallet</h3>
+
+            <p class="info-text">
+                Real wallet funding will be processed through
+                the payment provider after backend integration.
+            </p>
+
+
+            <label>Amount</label>
+
+            <input
+                id="depositAmount"
+                type="number"
+                min="100"
+                placeholder="Enter amount"
+            >
+
+
+            <button class="submit-button"
+                    onclick="fundWallet()">
+                FUND WALLET
+            </button>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- ================= TRANSACTIONS ================= -->
+
+<main id="transactions" class="page">
+
+    <div class="content-container">
+
+        <button class="back-button"
+                onclick="showPage('dashboard')">
+            ← Dashboard
+        </button>
+
+        <div class="page-heading">
+
+            <span>HISTORY</span>
+
+            <h1>Transactions</h1>
+
+            <p>Your transaction history.</p>
+
+        </div>
+
+
+        <div id="transactionList"
+             class="transaction-list">
+
+            <div class="empty-state">
+                No transactions available.
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- ================= REFERRAL ================= -->
+
+<main id="referral" class="page">
+
+    <div class="content-container">
+
+        <button class="back-button"
+                onclick="showPage('dashboard')">
+            ← Dashboard
+        </button>
+
+        <div class="page-heading">
+
+            <span>REFERRAL</span>
+
+            <h1>Refer & Earn</h1>
+
+            <p>
+                Your referral system will be connected
+                to the backend.
+            </p>
+
+        </div>
+
+
+        <section class="referral-card">
+
+            <p>Your Referral Code</p>
+
+            <h2 id="referralCode">
+                NOT AVAILABLE
+            </h2>
+
+            <button onclick="copyReferral()">
+                COPY CODE
+            </button>
+
+        </section>
+
+
+        <section class="purchase-card">
+
+            <label>Referral Link</label>
+
+            <input
+                id="referralLink"
+                type="text"
+                readonly
+                value="Not available"
+            >
+
+            <button class="submit-button"
+                    onclick="copyReferralLink()">
+                COPY LINK
+            </button>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- ================= PROFILE ================= -->
+
+<main id="profile" class="page">
+
+    <div class="content-container">
+
+        <button class="back-button"
+                onclick="showPage('dashboard')">
+            ← Dashboard
+        </button>
+
+        <div class="page-heading">
+
+            <span>ACCOUNT</span>
+
+            <h1>Profile</h1>
+
+            <p>Your account information.</p>
+
+        </div>
+
+
+        <section class="profile-card">
+
+            <div class="profile-avatar">
+                👤
+            </div>
+
+            <h2 id="profileName">
+                User
+            </h2>
+
+            <p id="profileUsername">
+                @username
+            </p>
+
+        </section>
+
+
+        <section class="profile-info">
+
+            <div>
+                <span>Full Name</span>
+                <strong id="profileFullName">
+                    —
+                </strong>
+            </div>
+
+            <div>
+                <span>Username</span>
+                <strong id="profileUsername2">
+                    —
+                </strong>
+            </div>
+
+            <div>
+                <span>Email</span>
+                <strong id="profileEmail">
+                    —
+                </strong>
+            </div>
+
+            <div>
+                <span>Phone</span>
+                <strong id="profilePhone">
+                    —
+                </strong>
+            </div>
+
+            <div>
+                <span>KYC Status</span>
+                <strong id="profileKyc">
+                    PENDING
+                </strong>
+            </div>
+
+            <div>
+                <span>Account Status</span>
+                <strong id="profileStatus">
+                    ACTIVE
+                </strong>
+            </div>
+
+        </section>
+
+
+        <button class="danger-button"
+                onclick="logout()">
+            LOGOUT
+        </button>
+
+    </div>
+
+</main>
+
+
+<!-- ================= ABOUT ================= -->
+
+<main id="about" class="page">
+
+    <div class="content-container">
+
+        <button class="back-button"
+                onclick="showPage('home')">
+            ← Home
+        </button>
+
+        <div class="page-heading">
+
+            <span>ABOUT</span>
+
+            <h1>EX-DATA WORLD</h1>
+
+            <p>
+                A digital services platform designed to bring
+                supported digital services together in one place.
+            </p>
+
+        </div>
+
+
+        <section class="info-panel">
+
+            <h2>Our Platform</h2>
+
+            <p>
+                EX-DATA WORLD is designed for digital services
+                including data, airtime, cable TV, electricity
+                and examination services.
+            </p>
+
+            <p>
+                Payment processing, KYC verification, virtual
+                accounts and service delivery require secure
+                backend and approved provider integrations.
+            </p>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- ================= MESSAGE ================= -->
+
+<div id="messageBox" class="message-box">
+
+    <div id="messageIcon">!</div>
+
+    <div id="messageText">
+        Message
+    </div>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="app.js"></script>
+
+</body>
+</html>
