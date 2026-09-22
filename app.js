@@ -17,7 +17,7 @@
    DO NOT put secret API keys here.
 */
 
-const API_URL = "https://api.ex-data-world.com";
+const API_URL = "https://ex-data-world-153e.onrender.com";
 
 
 /* ================= APP STATE ================= */
